@@ -1,7 +1,20 @@
+
 OpenVPN for Android
 =============
 ![build status](https://github.com/schwabe/ics-openvpn/actions/workflows/build.yaml/badge.svg)
 
+
+Build
+------------
+1) You need to build [OpenVPN Cloak PT plugin](https://github.com/amnezia-vpn/Cloak) (setup ANDROID_NDK_HOME and run makeCloakPlugin.sh)
+Example:
+>     export ANDROID_NDK_HOME=/home/osboxes/Android/Sdk/ndk/21.4.7075529
+>     ./makeCloakPlugin.sh
+2) Run gradle build (setup ANDROID_HOME and run gradle):
+Example:
+>     export ANDROID_HOME=/home/osboxes/Android/Sdk/
+>     ./gradlew assembleRelease
+3) Take native library and swig output into main project 
 
 Description
 ------------

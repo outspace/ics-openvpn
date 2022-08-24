@@ -9,7 +9,8 @@
 	url = ../../ARMmbed/mbedtls.git
 [submodule "main/src/main/cpp/openvpn3"]
 	path = main/src/main/cpp/openvpn3
-	url = ../../schwabe/openvpn3.git
+	url = https://github.com/amnezia-vpn/openvpn3.git
+	branch = cloak-pt-android
 [submodule "main/src/main/cpp/asio"]
 	path = main/src/main/cpp/asio
 	url = ../../chriskohlhoff/asio/

@@ -57,9 +57,12 @@ if (NOT ${CMAKE_LIBRARY_OUTPUT_DIRECTORY} MATCHES "build/intermediates/cmake/.*s
     #SET_SOURCE_FILES_PROPERTIES(openvpn3/javacli/ovpncli.i PROPERTIES CPLUSPLUS ON)
     #SWIG_ADD_MODULE(ovpen3cli java openvpn3/javacli/ovpncli.i)
     
-    add_library(openvpn_plugin SHARED IMPORTED)
-    set_target_properties(openvpn_plugin PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/pluginjni/${ANDROID_ABI}/libck-ovpn-plugin.so)
-    message(${CMAKE_BINARY_DIR})
+    link_directories(${CMAKE_SOURCE_DIR}/pluginjni/${ANDROID_ABI}/)
+   # add_library(openvpn_plugin SHARED IMPORTED)
+    
+    
+   # set_target_properties(openvpn_plugin PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/pluginjni/${ANDROID_ABI}/libck-ovpn-plugin.so)
+   # message(${CMAKE_BINARY_DIR})
 
 
     set(ovpn3_SRCS
@@ -82,7 +85,7 @@ if (NOT ${CMAKE_LIBRARY_OUTPUT_DIRECTORY} MATCHES "build/intermediates/cmake/.*s
         target_compile_definitions(ovpn3 PRIVATE
                 -DUSE_OPENSSL
                 )
-        target_link_libraries(ovpn3 crypto ssl lzo lz4 openvpn_plugin)
+        target_link_libraries(ovpn3 crypto ssl lzo lz4 libck-ovpn-plugin.so)
     else ()
         target_compile_definitions(ovpn3 PRIVATE
                 -DUSE_MBEDTLS

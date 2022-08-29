@@ -116,21 +116,21 @@ try go get ./...
 cd cmd/ck-ovpn-plugin
 
 echo "Cross compiling ckclient for arm"
-try env CGO_ENABLED=1 CC="$ANDROID_ARM_CC" GOOS=android GOARCH=arm GOARM=7 go build -ldflags="-s -w"
+try env CGO_ENABLED=1 CC="$ANDROID_ARM_CC" GOOS=android GOARCH=arm GOARM=7 go build -buildmode=c-shared -ldflags="-s -w"
 try mv ck-ovpn-plugin $SRC_DIR/pluginjni/armeabi-v7a/libck-ovpn-plugin.so
 
 echo "Cross compiling ckclient for arm64"
-try env CGO_ENABLED=1 CC="$ANDROID_ARM64_CC" GOOS=android GOARCH=arm64 go build -ldflags="-s -w"
+try env CGO_ENABLED=1 CC="$ANDROID_ARM64_CC" GOOS=android GOARCH=arm64 go build -buildmode=c-shared -ldflags="-s -w"
 try "$ANDROID_ARM64_STRIP" ck-ovpn-plugin
 try mv ck-ovpn-plugin $SRC_DIR/pluginjni/arm64-v8a/libck-ovpn-plugin.so
 
 echo "Cross compiling ckclient for x86"
-try env CGO_ENABLED=1 CC="$ANDROID_X86_CC" GOOS=android GOARCH=386 go build -ldflags="-s -w"
+try env CGO_ENABLED=1 CC="$ANDROID_X86_CC" GOOS=android GOARCH=386 go build -buildmode=c-shared -ldflags="-s -w"
 try "$ANDROID_X86_STRIP" ck-ovpn-plugin
 try mv ck-ovpn-plugin $SRC_DIR/pluginjni/x86/libck-ovpn-plugin.so
 
 echo "Cross compiling ckclient for x86_64"
-try env CGO_ENABLED=1 CC="$ANDROID_X86_64_CC" GOOS=android GOARCH=amd64 go build -ldflags="-s -w"
+try env CGO_ENABLED=1 CC="$ANDROID_X86_64_CC" GOOS=android GOARCH=amd64 go build -buildmode=c-shared -ldflags="-s -w"
 try "$ANDROID_X86_64_STRIP" ck-ovpn-plugin
 try mv ck-ovpn-plugin $SRC_DIR/pluginjni/x86_64/libck-ovpn-plugin.so
 
